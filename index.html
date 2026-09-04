@@ -1,122 +1,1162 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Internet Serbia — подключение домашнего интернета в Сербии на русском языке. Без ВНЖ, без предоплаты, бесплатное подключение." />
-  <title>Internet Serbia — интернет в Сербии на русском языке</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="InternetSerbia — домашний интернет в Сербии с поддержкой на русском языке. Без ВНЖ и предоплаты.">
+<title>InternetSerbia — домашний интернет в Сербии</title>
+
+<style>
+:root{
+  --bg:#06111f;
+  --bg2:#0a1a2e;
+  --blue:#1769ff;
+  --blue2:#63aeff;
+  --red:#ef3340;
+  --white:#ffffff;
+  --text:#eaf2fb;
+  --muted:#91a5bb;
+  --line:rgba(255,255,255,.10);
+  --max:1220px;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#06111f;
+  color:#fff;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+.container{
+  width:min(var(--max),calc(100% - 40px));
+  margin:auto;
+}
+
+/* HEADER */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,15,27,.88);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid var(--line);
+}
+
+.header-inner{
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  gap:30px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo img{
+  width:76px;
+  height:76px;
+  object-fit:cover;
+  object-position:center 26%;
+  border-radius:50%;
+}
+
+.logo-text{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-1px;
+}
+
+.logo-text span{
+  color:#ef3340;
+}
+
+nav{
+  margin-left:auto;
+  display:flex;
+  gap:28px;
+  font-size:14px;
+  font-weight:700;
+  color:#c7d4e4;
+}
+
+nav a:hover{
+  color:white;
+}
+
+.header-button{
+  padding:12px 18px;
+  border:1px solid rgba(96,156,255,.5);
+  border-radius:14px;
+  background:rgba(23,105,255,.12);
+  font-size:14px;
+  font-weight:700;
+}
+
+/* HERO */
+
+.hero{
+  min-height:690px;
+  position:relative;
+  overflow:hidden;
+  background:
+  radial-gradient(circle at 78% 30%,rgba(23,105,255,.35),transparent 31%),
+  radial-gradient(circle at 92% 78%,rgba(239,51,64,.15),transparent 24%),
+  linear-gradient(135deg,#06111f,#0a1b30);
+}
+
+.hero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.16;
+  background-image:
+  linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+  background-size:44px 44px;
+}
+
+.hero-inner{
+  position:relative;
+  z-index:2;
+  min-height:690px;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:55px;
+}
+
+.eyebrow{
+  display:inline-block;
+  margin-bottom:20px;
+  padding:9px 14px;
+  border-radius:999px;
+  color:#8fc1ff;
+  background:rgba(23,105,255,.12);
+  border:1px solid rgba(77,145,255,.25);
+  font-size:12px;
+  font-weight:800;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+}
+
+h1{
+  margin:0 0 24px;
+  font-size:78px;
+  line-height:.96;
+  letter-spacing:-4px;
+}
+
+h1 strong{
+  display:block;
+  color:#68afff;
+}
+
+.hero-hook{
+  font-size:21px;
+  font-weight:700;
+  color:#c7d8ea;
+  margin-bottom:14px;
+}
+
+.hero-hook b{
+  color:white;
+}
+
+.hero-copy p{
+  max-width:650px;
+  color:#91a6bc;
+  line-height:1.7;
+  font-size:17px;
+  margin:0 0 30px;
+}
+
+.buttons{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  min-height:56px;
+  padding:0 24px;
+  border-radius:15px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:800;
+  font-size:15px;
+}
+
+.btn-blue{
+  background:linear-gradient(135deg,#2b7cff,#0e58e9);
+  box-shadow:0 15px 40px rgba(23,105,255,.32);
+}
+
+.btn-dark{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.14);
+}
+
+/* HERO LOGO */
+
+.hero-logo{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:520px;
+}
+
+.logo-orb{
+  width:500px;
+  height:500px;
+  border-radius:50%;
+  position:relative;
+  background:
+  radial-gradient(circle,rgba(20,93,230,.28),rgba(3,14,28,.97) 68%);
+  border:1px solid rgba(92,160,255,.4);
+  box-shadow:
+  0 0 100px rgba(30,104,255,.27),
+  inset 0 0 60px rgba(30,104,255,.15);
+  overflow:hidden;
+}
+
+.logo-orb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center 18%;
+}
+
+.ring{
+  position:absolute;
+  border-radius:50%;
+  border:1px solid rgba(80,145,255,.18);
+}
+
+.r1{width:580px;height:580px;}
+.r2{width:680px;height:680px;}
+
+.float-card{
+  position:absolute;
+  background:rgba(8,22,39,.88);
+  border:1px solid rgba(255,255,255,.13);
+  padding:16px 18px;
+  border-radius:18px;
+  backdrop-filter:blur(12px);
+}
+
+.float-card small{
+  display:block;
+  color:#8ca2ba;
+  margin-bottom:5px;
+}
+
+.float-card strong{
+  font-size:15px;
+}
+
+.f1{
+  bottom:80px;
+  left:-5px;
+}
+
+.f2{
+  top:75px;
+  right:-10px;
+}
+
+/* HOOK STRIP */
+
+.hooks-wrap{
+  position:relative;
+  z-index:10;
+  margin-top:-25px;
+}
+
+.hooks{
+  background:white;
+  color:#0d1a2a;
+  display:grid;
+  grid-template-columns:repeat(8,1fr);
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 25px 70px rgba(0,0,0,.25);
+}
+
+.hook{
+  min-height:88px;
+  padding:16px 12px;
+  border-right:1px solid #e7edf4;
+  display:flex;
+  align-items:center;
+  gap:9px;
+  font-size:12px;
+  font-weight:800;
+}
+
+.hook:last-child{
+  border-right:none;
+}
+
+.hook-icon{
+  width:34px;
+  height:34px;
+  border-radius:10px;
+  background:#eaf3ff;
+  display:grid;
+  place-items:center;
+  color:#1769ff;
+  font-weight:900;
+}
+
+/* SECTIONS */
+
+.section{
+  padding:100px 0;
+}
+
+.light{
+  background:#f5f8fc;
+  color:#071423;
+}
+
+.kicker{
+  color:#1769ff;
+  font-size:12px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:1.5px;
+  margin-bottom:14px;
+}
+
+h2{
+  font-size:52px;
+  line-height:1.04;
+  letter-spacing:-2px;
+  margin:0 0 18px;
+}
+
+.section-intro{
+  color:#6c7c8d;
+  max-width:760px;
+  font-size:17px;
+}
+
+/* BENEFITS */
+
+.benefits{
+  margin-top:42px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+
+.benefit{
+  min-height:235px;
+  padding:28px;
+  border-radius:24px;
+  background:#fff;
+  border:1px solid #e1e8f0;
+  box-shadow:0 12px 35px rgba(10,30,60,.05);
+  position:relative;
+}
+
+.benefit-num{
+  position:absolute;
+  top:18px;
+  right:20px;
+  font-size:50px;
+  color:#e7eff8;
+  font-weight:900;
+}
+
+.benefit h3{
+  margin:72px 0 10px;
+  font-size:20px;
+}
+
+.benefit p{
+  color:#718194;
+  margin:0;
+  line-height:1.55;
+  font-size:14px;
+}
+
+.benefit.main{
+  color:white;
+  border:none;
+  background:linear-gradient(145deg,#0d5ded,#217aff);
+}
+
+.benefit.main p{
+  color:#d8e7ff;
+}
+
+.benefit.main .benefit-num{
+  color:rgba(255,255,255,.15);
+}
+
+/* TARIFFS */
+
+.tariffs-section{
+  background:
+  radial-gradient(circle at 20% 0%,rgba(32,105,255,.18),transparent 30%),
+  linear-gradient(#071421,#0a1b2e);
+}
+
+.tariff-grid{
+  margin-top:44px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+
+.tariff{
+  min-height:350px;
+  padding:30px;
+  border-radius:25px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.045);
+  display:flex;
+  flex-direction:column;
+}
+
+.tariff.featured{
+  background:linear-gradient(180deg,rgba(28,102,255,.27),rgba(12,38,75,.52));
+  border-color:rgba(86,147,255,.45);
+  transform:translateY(-10px);
+}
+
+.tariff-label{
+  color:#78b2ff;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:1.4px;
+  text-transform:uppercase;
+}
+
+.tariff h3{
+  font-size:27px;
+  margin:18px 0 10px;
+}
+
+.speed{
+  font-size:44px;
+  font-weight:900;
+  margin:8px 0;
+}
+
+.speed small{
+  font-size:14px;
+  color:#92a6bc;
+}
+
+.tariff p{
+  color:#91a4b9;
+  line-height:1.6;
+  font-size:14px;
+}
+
+.tariff ul{
+  padding:0;
+  list-style:none;
+  color:#c6d3df;
+  font-size:13px;
+  line-height:2;
+}
+
+.tariff li:before{
+  content:"✓";
+  color:#5daaff;
+  margin-right:8px;
+}
+
+.tariff .btn{
+  margin-top:auto;
+}
+
+/* STEPS */
+
+.steps{
+  margin-top:42px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.step{
+  padding:30px;
+  min-height:220px;
+  background:white;
+  border:1px solid #e2e9f1;
+  border-radius:24px;
+}
+
+.step-num{
+  color:#dfeaf7;
+  font-size:46px;
+  font-weight:900;
+  margin-bottom:34px;
+}
+
+.step h3{
+  font-size:21px;
+  margin:0 0 10px;
+}
+
+.step p{
+  color:#718195;
+  line-height:1.6;
+  font-size:14px;
+}
+
+/* FORM */
+
+.checker{
+  background:linear-gradient(135deg,#fff,#edf5ff);
+  padding:42px;
+  border-radius:30px;
+  border:1px solid #dce5ef;
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:35px;
+  align-items:center;
+}
+
+.checker h3{
+  font-size:34px;
+  line-height:1.08;
+  letter-spacing:-1px;
+  margin:0 0 10px;
+}
+
+.checker p{
+  color:#6f7f92;
+}
+
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:11px;
+}
+
+.form input,
+.form select{
+  min-height:54px;
+  border-radius:14px;
+  border:1px solid #d5dfeb;
+  padding:0 14px;
+  outline:none;
+}
+
+.full{
+  grid-column:1/-1;
+}
+
+.form button{
+  border:none;
+  cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+  background:#04101d;
+  padding:55px 0 25px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+.footer-logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.footer-logo img{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center 18%;
+}
+
+.footer-logo strong{
+  font-size:24px;
+}
+
+.footer-logo span{
+  color:#ef3340;
+}
+
+footer p{
+  color:#7f93a8;
+  font-size:13px;
+}
+
+.copyright{
+  margin-top:35px;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.08);
+  color:#62778e;
+  font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:1000px){
+
+nav{
+  display:none;
+}
+
+.hero-inner{
+  grid-template-columns:1fr;
+}
+
+.hero-logo{
+  min-height:470px;
+}
+
+.hooks{
+  grid-template-columns:repeat(4,1fr);
+}
+
+.benefits{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.tariff-grid{
+  grid-template-columns:1fr;
+}
+
+.tariff.featured{
+  transform:none;
+}
+
+.steps{
+  grid-template-columns:1fr;
+}
+
+.checker{
+  grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:650px){
+
+.container{
+  width:calc(100% - 22px);
+}
+
+.logo-text{
+  font-size:18px;
+}
+
+.header-button{
+  display:none;
+}
+
+h1{
+  font-size:48px;
+  letter-spacing:-2px;
+}
+
+.hero-hook{
+  font-size:17px;
+}
+
+.logo-orb{
+  width:320px;
+  height:320px;
+}
+
+.r1{
+  width:370px;
+  height:370px;
+}
+
+.r2{
+  display:none;
+}
+
+.hooks{
+  grid-template-columns:repeat(2,1fr);
+}
+
+.benefits{
+  grid-template-columns:1fr;
+}
+
+h2{
+  font-size:38px;
+}
+
+.form{
+  grid-template-columns:1fr;
+}
+
+.full{
+  grid-column:auto;
+}
+
+}
+</style>
 </head>
+
 <body>
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="#top" aria-label="Internet Serbia"><span class="brand-main">INTERNET</span><span class="brand-accent">SERBIA</span></a>
-      <nav class="main-nav" aria-label="Основная навигация">
-        <a href="#benefits">Преимущества</a><a href="#plans">Тарифы</a><a href="#how">Как подключить</a><a href="#request">Проверить адрес</a>
-      </nav>
-      <a class="header-cta" href="#request">Оставить заявку</a>
-    </div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-grid container">
-        <div class="hero-copy">
-          <div class="eyebrow">Интернет по всей Сербии • поддержка на русском</div>
-          <h1>Интернет в Сербии<br><span>без ВНЖ и предоплаты</span></h1>
-          <p class="hero-lead">Бесплатное быстрое подключение. Договор — после подключения. Первый платёж — только в конце первого месяца.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#request">Проверить подключение</a>
-            <a class="btn btn-secondary" href="#plans">Посмотреть тарифы</a>
-          </div>
-          <div class="trust-row">
-            <div><strong>0 €</strong><span>предоплата</span></div>
-            <div><strong>0 RSD</strong><span>подключение</span></div>
-            <div><strong>RU</strong><span>поддержка</span></div>
-          </div>
-        </div>
-        <div class="hero-visual" aria-hidden="true">
-          <div class="signal-orbit orbit-1"></div><div class="signal-orbit orbit-2"></div><div class="signal-orbit orbit-3"></div>
-          <div class="serbia-card">
-            <div class="map-label">SERBIA ONLINE</div><div class="map-outline">RS</div>
-            <div class="pulse p1"></div><div class="pulse p2"></div><div class="pulse p3"></div>
-            <div class="map-stat stat-a"><span>Подключение</span><strong>Бесплатно</strong></div>
-            <div class="map-stat stat-b"><span>Первый платёж</span><strong>В конце месяца</strong></div>
-          </div>
-        </div>
-      </div>
-      <div class="hook-strip"><div class="container hook-strip-inner">
-        <span>Лучшие тарифы</span><span>Без ВНЖ</span><span>Без предоплаты</span><span>Договор после подключения</span><span>Личный кабинет</span><span>Техподдержка на русском</span>
-      </div></div>
-    </section>
+<header>
+<div class="container header-inner">
 
-    <section class="section quick-request" id="request"><div class="container"><div class="request-shell">
-      <div class="request-copy">
-        <div class="section-kicker">Бесплатная проверка адреса</div>
-        <h2>Узнайте, можно ли подключить интернет в вашем доме</h2>
-        <p>Выберите населённый пункт, укажите точный адрес и оставьте контакт. Мы проверим техническую возможность подключения.</p>
-        <div class="mini-points"><span>✓ Без ВНЖ</span><span>✓ Без оплаты заранее</span><span>✓ Ответ на русском языке</span></div>
-      </div>
-      <form class="request-form" action="#" method="post" onsubmit="return false;">
-        <label><span>Имя</span><input type="text" name="name" placeholder="Как к вам обращаться" autocomplete="name"></label>
-        <label><span>Населённый пункт</span><input list="serbia-cities" name="city" placeholder="Начните вводить город или посёлок" required>
-          <datalist id="serbia-cities"><option value="Београд"><option value="Нови-Сад"><option value="Ниш"><option value="Крагуевац"><option value="Суботица"><option value="Панчево"><option value="Чачак"><option value="Кралево"><option value="Зренянин"><option value="Сомбор"></datalist>
-        </label>
-        <div class="form-grid"><label><span>Улица</span><input type="text" name="street" placeholder="Название улицы" required></label><label><span>Дом</span><input type="text" name="house" placeholder="№ дома" required></label></div>
-        <div class="form-grid"><label><span>Квартира</span><input type="text" name="apartment" placeholder="№ квартиры" required></label><label><span>Телефон / мессенджер</span><input type="tel" name="phone" placeholder="+381 ..." required></label></div>
-        <button class="btn btn-primary btn-wide" type="submit">Проверить возможность подключения</button>
-        <p class="form-note">Отправляя заявку, вы соглашаетесь на обработку контактных данных для проверки подключения.</p>
-      </form>
-    </div></div></section>
+<a class="logo" href="#">
+<img src="logo.png" alt="InternetSerbia">
+<div class="logo-text">Internet<span>Serbia</span></div>
+</a>
 
-    <section class="section" id="benefits"><div class="container">
-      <div class="section-heading"><div class="section-kicker">Почему Internet Serbia</div><h2>Подключение без лишней бюрократии</h2><p>Всё, что обычно вызывает вопросы у русскоязычных жителей Сербии, мы сделали максимально просто.</p></div>
-      <div class="benefit-grid">
-        <article class="benefit-card featured"><div class="icon">01</div><h3>Без ВНЖ</h3><p>Для подачи заявки не требуется сербский вид на жительство.</p></article>
-        <article class="benefit-card"><div class="icon">02</div><h3>Без предоплаты</h3><p>Не нужно платить за услугу до фактического подключения.</p></article>
-        <article class="benefit-card"><div class="icon">03</div><h3>Первый платёж — позже</h3><p>Первый счёт оплачивается только в конце первого месяца использования.</p></article>
-        <article class="benefit-card"><div class="icon">04</div><h3>Договор после подключения</h3><p>Сначала выполняется подключение, затем оформляется договор.</p></article>
-        <article class="benefit-card"><div class="icon">05</div><h3>Бесплатное подключение</h3><p>Стандартное подключение без отдельной платы.</p></article>
-        <article class="benefit-card"><div class="icon">06</div><h3>Поддержка на русском</h3><p>Помогаем с заявкой, тарифами и техническими вопросами на русском языке.</p></article>
-        <article class="benefit-card"><div class="icon">07</div><h3>Личный кабинет</h3><p>Счета, услуги и информация по подключению доступны онлайн.</p></article>
-        <article class="benefit-card"><div class="icon">08</div><h3>По всей Сербии</h3><p>Проверяем техническую возможность подключения по конкретному адресу.</p></article>
-      </div>
-    </div></section>
+<nav>
+<a href="#benefits">Преимущества</a>
+<a href="#tariffs">Тарифы</a>
+<a href="#steps">Как подключить</a>
+<a href="#check">Проверить адрес</a>
+</nav>
 
-    <section class="section dark-section" id="plans"><div class="container">
-      <div class="section-heading light"><div class="section-kicker">Тарифы</div><h2>Лучшие тарифы на интернет в Сербии</h2><p>Конкретные доступные пакеты зависят от адреса. После проверки предложим оптимальные варианты.</p></div>
-      <div class="plan-grid">
-        <article class="plan-card"><div class="plan-label">Для квартиры</div><h3>Домашний интернет</h3><p>Для просмотра видео, общения, работы и повседневного использования.</p><div class="plan-hook">Без ВНЖ • без предоплаты</div><a href="#request" class="btn btn-card">Проверить адрес</a></article>
-        <article class="plan-card popular"><div class="popular-badge">Популярно</div><div class="plan-label">Для семьи</div><h3>Интернет + ТВ</h3><p>Высокоскоростной интернет и телевизионные пакеты в одном подключении.</p><div class="plan-hook">Подключение бесплатно</div><a href="#request" class="btn btn-primary btn-card">Узнать доступность</a></article>
-        <article class="plan-card"><div class="plan-label">Для работы</div><h3>Высокая скорость</h3><p>Решения для удалённой работы, видеосвязи и нескольких устройств одновременно.</p><div class="plan-hook">Поддержка на русском</div><a href="#request" class="btn btn-card">Подобрать тариф</a></article>
-      </div>
-    </div></section>
+<a class="header-button" href="#check">Личный кабинет</a>
 
-    <section class="section" id="how"><div class="container">
-      <div class="section-heading"><div class="section-kicker">Как это работает</div><h2>Четыре шага до подключения</h2></div>
-      <div class="steps">
-        <article class="step"><span>1</span><h3>Оставляете адрес</h3><p>Город, улица, дом, квартира и контакт для связи.</p></article>
-        <article class="step"><span>2</span><h3>Проверяем подключение</h3><p>Уточняем техническую возможность именно по вашему адресу.</p></article>
-        <article class="step"><span>3</span><h3>Подбираем тариф</h3><p>Предлагаем доступные варианты и объясняем условия по-русски.</p></article>
-        <article class="step"><span>4</span><h3>Подключаем</h3><p>После подключения оформляется договор. Первый платёж — в конце месяца.</p></article>
-      </div>
-    </div></section>
+</div>
+</header>
 
-    <section class="section account-section"><div class="container account-grid">
-      <div><div class="section-kicker">Управление онлайн</div><h2>Личный кабинет всегда под рукой</h2><p>Следите за подключёнными услугами, счетами и другой информацией онлайн — без необходимости звонить по каждому вопросу.</p><a href="#request" class="text-link">Подключиться →</a></div>
-      <div class="dashboard-demo" aria-hidden="true"><div class="dash-head"><span>Личный кабинет</span><span class="status">● ONLINE</span></div><div class="dash-card"><small>Статус услуги</small><strong>Интернет активен</strong></div><div class="dash-row"><div><small>Оплата</small><strong>В конце месяца</strong></div><div><small>Поддержка</small><strong>RU</strong></div></div></div>
-    </div></section>
+<section class="hero">
 
-    <section class="section final-cta"><div class="container final-cta-box"><div><div class="section-kicker">Начните с проверки адреса</div><h2>Сначала подключение. Потом договор и оплата.</h2><p>Оставьте адрес — мы бесплатно проверим возможность подключения и свяжемся с вами на русском языке.</p></div><a class="btn btn-primary" href="#request">Проверить мой адрес</a></div></section>
-  </main>
+<div class="container hero-inner">
 
-  <footer class="site-footer"><div class="container footer-grid">
-    <div><div class="brand footer-brand"><span class="brand-main">INTERNET</span><span class="brand-accent">SERBIA</span></div><p>Сервис помощи в подключении интернет-услуг в Сербии на русском языке.</p></div>
-    <div><strong>Навигация</strong><a href="#benefits">Преимущества</a><a href="#plans">Тарифы</a><a href="#how">Как подключить</a></div>
-    <div><strong>Документы</strong><a href="#">Политика конфиденциальности</a><a href="#">Обработка персональных данных</a></div>
-  </div><div class="container footer-bottom"><span>© 2026 InternetSerbia.com</span><span>Сербия</span></div></footer>
+<div class="hero-copy">
+
+<div class="eyebrow">
+По всей Сербии • поддержка на русском
+</div>
+
+<h1>
+Домашний интернет
+<strong>в Сербии</strong>
+</h1>
+
+<div class="hero-hook">
+<b>Без ВНЖ.</b> Без предоплаты. Бесплатное подключение.
+</div>
+
+<p>
+Мы сделаем всё максимально быстро и просто.
+Договор — после подключения.
+Первый платёж — только в конце первого месяца.
+</p>
+
+<div class="buttons">
+<a class="btn btn-blue" href="#check">
+Проверить подключение →
+</a>
+
+<a class="btn btn-dark" href="#tariffs">
+Посмотреть тарифы
+</a>
+</div>
+
+</div>
+
+<div class="hero-logo">
+
+<div class="ring r2"></div>
+<div class="ring r1"></div>
+
+<div class="logo-orb">
+<img src="logo.png" alt="">
+</div>
+
+<div class="float-card f1">
+<small>Подключение</small>
+<strong>Бесплатно</strong>
+</div>
+
+<div class="float-card f2">
+<small>Первый платёж</small>
+<strong>В конце месяца</strong>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<div class="hooks-wrap">
+<div class="container hooks">
+
+<div class="hook">
+<div class="hook-icon">★</div>
+Лучшие тарифы
+</div>
+
+<div class="hook">
+<div class="hook-icon">↯</div>
+Бесплатное подключение
+</div>
+
+<div class="hook">
+<div class="hook-icon">✓</div>
+Договор после подключения
+</div>
+
+<div class="hook">
+<div class="hook-icon">ID</div>
+Без ВНЖ
+</div>
+
+<div class="hook">
+<div class="hook-icon">0</div>
+Без предоплаты
+</div>
+
+<div class="hook">
+<div class="hook-icon">RU</div>
+Поддержка на русском
+</div>
+
+<div class="hook">
+<div class="hook-icon">30</div>
+Оплата в конце месяца
+</div>
+
+<div class="hook">
+<div class="hook-icon">⌂</div>
+Личный кабинет
+</div>
+
+</div>
+</div>
+
+<section class="section light" id="benefits">
+
+<div class="container">
+
+<div class="kicker">Почему InternetSerbia</div>
+
+<h2>
+Мы сделаем всё максимально быстро и просто.
+</h2>
+
+<div class="benefits">
+
+<div class="benefit main">
+<div class="benefit-num">01</div>
+<h3>Без ВНЖ</h3>
+<p>
+Для подачи заявки не требуется сербский вид на жительство.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">02</div>
+<h3>Без предоплаты</h3>
+<p>
+Не нужно оплачивать услугу до фактического подключения.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">03</div>
+<h3>Договор после подключения</h3>
+<p>
+Сначала подключение, затем оформление договора.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">04</div>
+<h3>Поддержка на русском</h3>
+<p>
+Поможем с заявкой, тарифами и техническими вопросами.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">05</div>
+<h3>Первый платёж позже</h3>
+<p>
+Первый счёт оплачивается только в конце первого месяца.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">06</div>
+<h3>Личный кабинет</h3>
+<p>
+Информация по услугам и оплате доступна онлайн.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">07</div>
+<h3>Бесплатное подключение</h3>
+<p>
+Стандартное подключение — без отдельной платы.
+</p>
+</div>
+
+<div class="benefit">
+<div class="benefit-num">08</div>
+<h3>По всей Сербии</h3>
+<p>
+Проверяем возможность подключения по конкретному адресу.
+</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="section tariffs-section" id="tariffs">
+
+<div class="container">
+
+<div class="kicker">Тарифы</div>
+
+<h2>
+Лучшие варианты для дома
+</h2>
+
+<p class="section-intro">
+Доступные скорости и условия зависят от конкретного адреса.
+После проверки предложим подходящие варианты.
+</p>
+
+<div class="tariff-grid">
+
+<div class="tariff">
+
+<div class="tariff-label">
+Базовый
+</div>
+
+<h3>
+Для одного человека
+</h3>
+
+<div class="speed">
+100
+<small>Мбит/с*</small>
+</div>
+
+<p>
+Для повседневного использования, видео и общения.
+</p>
+
+<ul>
+<li>Wi-Fi роутер</li>
+<li>Безлимитный трафик</li>
+<li>Поддержка на русском</li>
+</ul>
+
+<a class="btn btn-dark" href="#check">
+Проверить доступность
+</a>
+
+</div>
+
+<div class="tariff featured">
+
+<div class="tariff-label">
+Оптимальный
+</div>
+
+<h3>
+Для семьи и работы
+</h3>
+
+<div class="speed">
+300
+<small>Мбит/с*</small>
+</div>
+
+<p>
+Для нескольких устройств, видеосвязи и онлайн-сервисов.
+</p>
+
+<ul>
+<li>Wi-Fi роутер</li>
+<li>Безлимитный трафик</li>
+<li>Поддержка на русском</li>
+</ul>
+
+<a class="btn btn-blue" href="#check">
+Подобрать тариф
+</a>
+
+</div>
+
+<div class="tariff">
+
+<div class="tariff-label">
+Максимум
+</div>
+
+<h3>
+Для большого дома
+</h3>
+
+<div class="speed">
+600
+<small>Мбит/с*</small>
+</div>
+
+<p>
+Для высоких нагрузок и нескольких пользователей.
+</p>
+
+<ul>
+<li>Wi-Fi роутер</li>
+<li>Безлимитный трафик</li>
+<li>Поддержка на русском</li>
+</ul>
+
+<a class="btn btn-dark" href="#check">
+Проверить доступность
+</a>
+
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section light" id="steps">
+
+<div class="container">
+
+<div class="kicker">
+Как подключить
+</div>
+
+<h2>
+Три простых шага
+</h2>
+
+<div class="steps">
+
+<div class="step">
+<div class="step-num">01</div>
+<h3>Оставляете заявку</h3>
+<p>
+Выбираете населённый пункт и указываете адрес.
+</p>
+</div>
+
+<div class="step">
+<div class="step-num">02</div>
+<h3>Проверяем адрес</h3>
+<p>
+Уточняем техническую возможность подключения.
+</p>
+</div>
+
+<div class="step">
+<div class="step-num">03</div>
+<h3>Подключаем интернет</h3>
+<p>
+Согласовываем удобное время и выполняем подключение.
+</p>
+</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="section light" id="check" style="padding-top:0">
+
+<div class="container checker">
+
+<div>
+
+<div class="kicker">
+Проверка адреса
+</div>
+
+<h3>
+Узнайте, можно ли подключить интернет в вашем доме
+</h3>
+
+<p>
+Проверка бесплатная и ни к чему вас не обязывает.
+</p>
+
+</div>
+
+<form class="form">
+
+<select required>
+<option value="">Населённый пункт</option>
+<option>Београд</option>
+<option>Нови-Сад</option>
+<option>Ниш</option>
+<option>Крагуевац</option>
+<option>Суботица</option>
+</select>
+
+<input type="text" placeholder="Улица">
+
+<input type="text" placeholder="Дом">
+
+<input type="text" placeholder="Квартира">
+
+<input class="full" type="tel" placeholder="Телефон / WhatsApp / Telegram">
+
+<button class="btn btn-blue full" type="button">
+Проверить возможность подключения
+</button>
+
+</form>
+
+</div>
+</section>
+
+<footer>
+
+<div class="container">
+
+<div class="footer-logo">
+<img src="logo.png" alt="InternetSerbia">
+<strong>Internet<span>Serbia</span></strong>
+</div>
+
+<p>
+Домашний интернет в Сербии с поддержкой на русском языке.
+</p>
+
+<div class="copyright">
+© 2026 InternetSerbia.com
+</div>
+
+</div>
+
+</footer>
+
 </body>
 </html>
