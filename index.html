@@ -9,36 +9,34 @@
 <style>
 :root{
   --bg:#06111f;
-  --bg2:#0a1a2e;
   --blue:#1769ff;
-  --blue2:#63aeff;
   --red:#ef3340;
-  --white:#ffffff;
-  --text:#eaf2fb;
-  --muted:#91a5bb;
   --line:rgba(255,255,255,.10);
+  --paper:#f5f8fc;
+  --ink:#071423;
   --max:1220px;
+  --radius:24px;
+  --shadow:0 18px 48px rgba(8,31,58,.08);
 }
 
-*{
-  box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   margin:0;
   font-family:Arial,Helvetica,sans-serif;
-  background:#06111f;
+  background:var(--bg);
   color:#fff;
+  overflow-x:hidden;
 }
 
 a{
   color:inherit;
   text-decoration:none;
 }
+
+button,input,select{font:inherit}
 
 .container{
   width:min(var(--max),calc(100% - 40px));
@@ -70,10 +68,10 @@ header{
 }
 
 .logo img{
-  width:76px;
-  height:76px;
+  width:66px;
+  height:66px;
   object-fit:cover;
-  object-position:center 26%;
+  object-position:center 18%;
   border-radius:50%;
 }
 
@@ -84,7 +82,7 @@ header{
 }
 
 .logo-text span{
-  color:#ef3340;
+  color:var(--red);
 }
 
 nav{
@@ -100,25 +98,16 @@ nav a:hover{
   color:white;
 }
 
-.header-button{
-  padding:12px 18px;
-  border:1px solid rgba(96,156,255,.5);
-  border-radius:14px;
-  background:rgba(23,105,255,.12);
-  font-size:14px;
-  font-weight:700;
-}
-
 /* HERO */
 
 .hero{
-  min-height:690px;
+  min-height:680px;
   position:relative;
   overflow:hidden;
   background:
-  radial-gradient(circle at 78% 30%,rgba(23,105,255,.35),transparent 31%),
-  radial-gradient(circle at 92% 78%,rgba(239,51,64,.15),transparent 24%),
-  linear-gradient(135deg,#06111f,#0a1b30);
+    radial-gradient(circle at 78% 30%,rgba(23,105,255,.35),transparent 31%),
+    radial-gradient(circle at 92% 78%,rgba(239,51,64,.14),transparent 24%),
+    linear-gradient(135deg,#06111f,#0a1b30);
 }
 
 .hero:before{
@@ -127,19 +116,19 @@ nav a:hover{
   inset:0;
   opacity:.16;
   background-image:
-  linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-  linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+    linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
   background-size:44px 44px;
 }
 
 .hero-inner{
   position:relative;
   z-index:2;
-  min-height:690px;
+  min-height:680px;
   display:grid;
   grid-template-columns:1.05fr .95fr;
   align-items:center;
-  gap:55px;
+  gap:56px;
 }
 
 .eyebrow{
@@ -158,7 +147,7 @@ nav a:hover{
 
 h1{
   margin:0 0 24px;
-  font-size:78px;
+  font-size:clamp(48px,6vw,78px);
   line-height:.96;
   letter-spacing:-4px;
 }
@@ -170,6 +159,7 @@ h1 strong{
 
 .hero-hook{
   font-size:21px;
+  line-height:1.45;
   font-weight:700;
   color:#c7d8ea;
   margin-bottom:14px;
@@ -202,6 +192,7 @@ h1 strong{
   align-items:center;
   font-weight:800;
   font-size:15px;
+  border:none;
 }
 
 .btn-blue{
@@ -214,8 +205,6 @@ h1 strong{
   border:1px solid rgba(255,255,255,.14);
 }
 
-/* HERO LOGO */
-
 .hero-logo{
   position:relative;
   display:flex;
@@ -225,16 +214,15 @@ h1 strong{
 }
 
 .logo-orb{
-  width:500px;
-  height:500px;
+  width:min(500px,88vw);
+  aspect-ratio:1/1;
   border-radius:50%;
   position:relative;
-  background:
-  radial-gradient(circle,rgba(20,93,230,.28),rgba(3,14,28,.97) 68%);
+  background:radial-gradient(circle,rgba(20,93,230,.28),rgba(3,14,28,.97) 68%);
   border:1px solid rgba(92,160,255,.4);
   box-shadow:
-  0 0 100px rgba(30,104,255,.27),
-  inset 0 0 60px rgba(30,104,255,.15);
+    0 0 100px rgba(30,104,255,.27),
+    inset 0 0 60px rgba(30,104,255,.15);
   overflow:hidden;
 }
 
@@ -251,54 +239,32 @@ h1 strong{
   border:1px solid rgba(80,145,255,.18);
 }
 
-.r1{width:580px;height:580px;}
-.r2{width:680px;height:680px;}
-
-.float-card{
-  position:absolute;
-  background:rgba(8,22,39,.88);
-  border:1px solid rgba(255,255,255,.13);
-  padding:16px 18px;
-  border-radius:18px;
-  backdrop-filter:blur(12px);
+.r1{
+  width:580px;
+  height:580px;
 }
 
-.float-card small{
-  display:block;
-  color:#8ca2ba;
-  margin-bottom:5px;
+.r2{
+  width:680px;
+  height:680px;
 }
 
-.float-card strong{
-  font-size:15px;
-}
-
-.f1{
-  bottom:80px;
-  left:-5px;
-}
-
-.f2{
-  top:75px;
-  right:-10px;
-}
-
-/* HOOK STRIP */
+/* HOOKS */
 
 .hooks-wrap{
   position:relative;
   z-index:10;
-  margin-top:-25px;
+  margin-top:-22px;
 }
 
 .hooks{
-  background:white;
+  background:#fff;
   color:#0d1a2a;
   display:grid;
-  grid-template-columns:repeat(8,1fr);
+  grid-template-columns:repeat(7,1fr);
   border-radius:24px;
   overflow:hidden;
-  box-shadow:0 25px 70px rgba(0,0,0,.25);
+  box-shadow:0 25px 70px rgba(0,0,0,.22);
 }
 
 .hook{
@@ -310,6 +276,7 @@ h1 strong{
   gap:9px;
   font-size:12px;
   font-weight:800;
+  line-height:1.25;
 }
 
 .hook:last-child{
@@ -325,17 +292,18 @@ h1 strong{
   place-items:center;
   color:#1769ff;
   font-weight:900;
+  flex:0 0 34px;
 }
 
 /* SECTIONS */
 
 .section{
-  padding:100px 0;
+  padding:96px 0;
 }
 
 .light{
-  background:#f5f8fc;
-  color:#071423;
+  background:var(--paper);
+  color:var(--ink);
 }
 
 .kicker{
@@ -348,7 +316,7 @@ h1 strong{
 }
 
 h2{
-  font-size:52px;
+  font-size:clamp(38px,4.5vw,52px);
   line-height:1.04;
   letter-spacing:-2px;
   margin:0 0 18px;
@@ -356,8 +324,15 @@ h2{
 
 .section-intro{
   color:#6c7c8d;
-  max-width:760px;
+  max-width:780px;
   font-size:17px;
+  line-height:1.65;
+  margin:0;
+}
+
+.section-intro.centered{
+  margin:0 auto;
+  text-align:center;
 }
 
 /* BENEFITS */
@@ -366,16 +341,16 @@ h2{
   margin-top:42px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:16px;
+  gap:18px;
 }
 
 .benefit{
   min-height:235px;
   padding:28px;
-  border-radius:24px;
-  background:#fff;
+  border-radius:var(--radius);
+  background:linear-gradient(180deg,#fff,#fbfdff);
   border:1px solid #e1e8f0;
-  box-shadow:0 12px 35px rgba(10,30,60,.05);
+  box-shadow:var(--shadow);
   position:relative;
 }
 
@@ -418,23 +393,29 @@ h2{
 
 .tariffs-section{
   background:
-  radial-gradient(circle at 20% 0%,rgba(32,105,255,.18),transparent 30%),
-  linear-gradient(#071421,#0a1b2e);
+    radial-gradient(circle at 20% 0%,rgba(32,105,255,.18),transparent 30%),
+    linear-gradient(#071421,#0a1b2e);
+}
+
+.tariffs-head{
+  max-width:860px;
+  margin:0 auto;
+  text-align:center;
 }
 
 .tariff-grid{
   margin-top:44px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:20px;
 }
 
 .tariff{
-  min-height:350px;
+  min-height:320px;
   padding:30px;
   border-radius:25px;
   border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.045);
+  background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.035));
   display:flex;
   flex-direction:column;
 }
@@ -442,7 +423,6 @@ h2{
 .tariff.featured{
   background:linear-gradient(180deg,rgba(28,102,255,.27),rgba(12,38,75,.52));
   border-color:rgba(86,147,255,.45);
-  transform:translateY(-10px);
 }
 
 .tariff-label{
@@ -453,15 +433,10 @@ h2{
   text-transform:uppercase;
 }
 
-.tariff h3{
-  font-size:27px;
-  margin:18px 0 10px;
-}
-
 .speed{
   font-size:44px;
   font-weight:900;
-  margin:8px 0;
+  margin:22px 0 12px;
 }
 
 .speed small{
@@ -499,15 +474,16 @@ h2{
   margin-top:42px;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:16px;
+  gap:18px;
 }
 
 .step{
   padding:30px;
   min-height:220px;
-  background:white;
+  background:linear-gradient(180deg,#fff,#fbfdff);
   border:1px solid #e2e9f1;
   border-radius:24px;
+  box-shadow:var(--shadow);
 }
 
 .step-num{
@@ -526,6 +502,7 @@ h2{
   color:#718195;
   line-height:1.6;
   font-size:14px;
+  margin:0;
 }
 
 /* FORM */
@@ -536,9 +513,10 @@ h2{
   border-radius:30px;
   border:1px solid #dce5ef;
   display:grid;
-  grid-template-columns:.8fr 1.2fr;
+  grid-template-columns:.78fr 1.22fr;
   gap:35px;
-  align-items:center;
+  align-items:start;
+  box-shadow:0 22px 55px rgba(10,40,80,.08);
 }
 
 .checker h3{
@@ -550,12 +528,25 @@ h2{
 
 .checker p{
   color:#6f7f92;
+  line-height:1.55;
 }
 
 .form{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:11px;
+  gap:12px;
+}
+
+.field{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+
+.field label{
+  color:#516275;
+  font-size:12px;
+  font-weight:700;
 }
 
 .form input,
@@ -565,6 +556,15 @@ h2{
   border:1px solid #d5dfeb;
   padding:0 14px;
   outline:none;
+  background:#fff;
+  color:#0b1828;
+  width:100%;
+}
+
+.form input:focus,
+.form select:focus{
+  border-color:#6ea7ff;
+  box-shadow:0 0 0 4px rgba(23,105,255,.08);
 }
 
 .full{
@@ -574,6 +574,15 @@ h2{
 .form button{
   border:none;
   cursor:pointer;
+  width:100%;
+}
+
+.form-note{
+  grid-column:1/-1;
+  margin:2px 0 0;
+  color:#7b8b9d;
+  font-size:11px;
+  line-height:1.45;
 }
 
 /* FOOTER */
@@ -619,105 +628,256 @@ footer p{
   font-size:12px;
 }
 
-/* MOBILE */
+/* TABLET */
 
 @media(max-width:1000px){
 
-nav{
-  display:none;
+  nav{
+    display:none;
+  }
+
+  .hero-inner{
+    grid-template-columns:1fr;
+    gap:10px;
+    padding:48px 0 28px;
+  }
+
+  .hero-copy{
+    text-align:center;
+  }
+
+  .hero-copy p{
+    margin-left:auto;
+    margin-right:auto;
+  }
+
+  .buttons{
+    justify-content:center;
+  }
+
+  .hero-logo{
+    min-height:470px;
+  }
+
+  .hooks{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .hook{
+    border-bottom:1px solid #e7edf4;
+  }
+
+  .benefits{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .tariff-grid{
+    grid-template-columns:1fr;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+  .checker{
+    grid-template-columns:1fr;
+  }
 }
 
-.hero-inner{
-  grid-template-columns:1fr;
-}
-
-.hero-logo{
-  min-height:470px;
-}
-
-.hooks{
-  grid-template-columns:repeat(4,1fr);
-}
-
-.benefits{
-  grid-template-columns:repeat(2,1fr);
-}
-
-.tariff-grid{
-  grid-template-columns:1fr;
-}
-
-.tariff.featured{
-  transform:none;
-}
-
-.steps{
-  grid-template-columns:1fr;
-}
-
-.checker{
-  grid-template-columns:1fr;
-}
-
-}
+/* MOBILE */
 
 @media(max-width:650px){
 
-.container{
-  width:calc(100% - 22px);
-}
+  .container{
+    width:calc(100% - 24px);
+  }
 
-.logo-text{
-  font-size:18px;
-}
+  header{
+    position:relative;
+  }
 
-.header-button{
-  display:none;
-}
+  .header-inner{
+    min-height:72px;
+    justify-content:center;
+    padding:8px 0;
+  }
 
-h1{
-  font-size:48px;
-  letter-spacing:-2px;
-}
+  .logo img{
+    width:54px;
+    height:54px;
+  }
 
-.hero-hook{
-  font-size:17px;
-}
+  .logo-text{
+    font-size:18px;
+  }
 
-.logo-orb{
-  width:320px;
-  height:320px;
-}
+  .hero{
+    min-height:auto;
+  }
 
-.r1{
-  width:370px;
-  height:370px;
-}
+  .hero-inner{
+    min-height:auto;
+    padding:38px 0 20px;
+  }
 
-.r2{
-  display:none;
-}
+  .eyebrow{
+    max-width:100%;
+    white-space:normal;
+    line-height:1.45;
+  }
 
-.hooks{
-  grid-template-columns:repeat(2,1fr);
-}
+  h1{
+    font-size:44px;
+    line-height:1.02;
+    letter-spacing:-2px;
+  }
 
-.benefits{
-  grid-template-columns:1fr;
-}
+  .hero-hook{
+    font-size:17px;
+    line-height:1.5;
+  }
 
-h2{
-  font-size:38px;
-}
+  .hero-copy p{
+    font-size:15px;
+    line-height:1.65;
+    padding:0 4px;
+  }
 
-.form{
-  grid-template-columns:1fr;
-}
+  .buttons{
+    display:grid;
+    grid-template-columns:1fr;
+    width:100%;
+  }
 
-.full{
-  grid-column:auto;
-}
+  .btn{
+    width:100%;
+  }
 
+  .hero-logo{
+    min-height:360px;
+  }
+
+  .logo-orb{
+    width:300px;
+  }
+
+  .r1{
+    width:340px;
+    height:340px;
+  }
+
+  .r2{
+    display:none;
+  }
+
+  .hooks-wrap{
+    margin-top:0;
+    padding-top:14px;
+    background:#f5f8fc;
+  }
+
+  .hooks{
+    grid-template-columns:1fr;
+    border-radius:20px;
+  }
+
+  .hook{
+    min-height:62px;
+    padding:13px 14px;
+    border-right:none;
+    border-bottom:1px solid #e7edf4;
+  }
+
+  .section{
+    padding:68px 0;
+  }
+
+  .tariffs-head,
+  .section-intro.centered{
+    text-align:left;
+  }
+
+  h2{
+    font-size:36px;
+    line-height:1.08;
+    letter-spacing:-1.3px;
+  }
+
+  .section-intro,
+  .section-intro.centered{
+    font-size:15px;
+    line-height:1.65;
+  }
+
+  .benefits{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+
+  .benefit{
+    min-height:auto;
+    padding:24px;
+  }
+
+  .benefit h3{
+    margin-top:56px;
+  }
+
+  .tariff-grid{
+    gap:14px;
+  }
+
+  .tariff{
+    min-height:auto;
+    padding:24px;
+  }
+
+  .speed{
+    font-size:38px;
+  }
+
+  .steps{
+    gap:14px;
+  }
+
+  .step{
+    min-height:auto;
+    padding:24px;
+  }
+
+  .step-num{
+    margin-bottom:22px;
+  }
+
+  .checker{
+    padding:24px;
+    border-radius:24px;
+    gap:24px;
+  }
+
+  .checker h3{
+    font-size:28px;
+  }
+
+  .form{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .form-note{
+    grid-column:auto;
+  }
+
+  .footer-logo{
+    justify-content:center;
+  }
+
+  footer{
+    text-align:center;
+  }
 }
 </style>
 </head>
@@ -738,8 +898,6 @@ h2{
 <a href="#steps">Как подключить</a>
 <a href="#check">Проверить адрес</a>
 </nav>
-
-<a class="header-button" href="#check">Личный кабинет</a>
 
 </div>
 </header>
@@ -770,6 +928,7 @@ h2{
 </p>
 
 <div class="buttons">
+
 <a class="btn btn-blue" href="#check">
 Проверить подключение →
 </a>
@@ -777,6 +936,7 @@ h2{
 <a class="btn btn-dark" href="#tariffs">
 Посмотреть тарифы
 </a>
+
 </div>
 
 </div>
@@ -787,25 +947,17 @@ h2{
 <div class="ring r1"></div>
 
 <div class="logo-orb">
-<img src="logo.png" alt="">
-</div>
-
-<div class="float-card f1">
-<small>Подключение</small>
-<strong>Бесплатно</strong>
-</div>
-
-<div class="float-card f2">
-<small>Первый платёж</small>
-<strong>В конце месяца</strong>
+<img src="logo.png" alt="InternetSerbia">
 </div>
 
 </div>
 
 </div>
+
 </section>
 
 <div class="hooks-wrap">
+
 <div class="container hooks">
 
 <div class="hook">
@@ -843,19 +995,17 @@ h2{
 Оплата в конце месяца
 </div>
 
-<div class="hook">
-<div class="hook-icon">⌂</div>
-Личный кабинет
 </div>
 
-</div>
 </div>
 
 <section class="section light" id="benefits">
 
 <div class="container">
 
-<div class="kicker">Почему InternetSerbia</div>
+<div class="kicker">
+Почему InternetSerbia
+</div>
 
 <h2>
 Мы сделаем всё максимально быстро и просто.
@@ -866,65 +1016,49 @@ h2{
 <div class="benefit main">
 <div class="benefit-num">01</div>
 <h3>Без ВНЖ</h3>
-<p>
-Для подачи заявки не требуется сербский вид на жительство.
-</p>
+<p>Для подачи заявки не требуется сербский вид на жительство.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">02</div>
 <h3>Без предоплаты</h3>
-<p>
-Не нужно оплачивать услугу до фактического подключения.
-</p>
+<p>Не нужно оплачивать услугу до фактического подключения.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">03</div>
 <h3>Договор после подключения</h3>
-<p>
-Сначала подключение, затем оформление договора.
-</p>
+<p>Сначала подключение, затем оформление договора.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">04</div>
 <h3>Поддержка на русском</h3>
-<p>
-Поможем с заявкой, тарифами и техническими вопросами.
-</p>
+<p>Поможем с заявкой, тарифами и техническими вопросами.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">05</div>
 <h3>Первый платёж позже</h3>
-<p>
-Первый счёт оплачивается только в конце первого месяца.
-</p>
+<p>Первый счёт оплачивается только в конце первого месяца.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">06</div>
 <h3>Личный кабинет</h3>
-<p>
-Информация по услугам и оплате доступна онлайн.
-</p>
+<p>Информация по услугам и оплате доступна онлайн.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">07</div>
 <h3>Бесплатное подключение</h3>
-<p>
-Стандартное подключение — без отдельной платы.
-</p>
+<p>Стандартное подключение — без отдельной платы.</p>
 </div>
 
 <div class="benefit">
 <div class="benefit-num">08</div>
 <h3>По всей Сербии</h3>
-<p>
-Проверяем возможность подключения по конкретному адресу.
-</p>
+<p>Проверяем возможность подключения по конкретному адресу.</p>
 </div>
 
 </div>
@@ -935,16 +1069,22 @@ h2{
 
 <div class="container">
 
-<div class="kicker">Тарифы</div>
+<div class="tariffs-head">
+
+<div class="kicker">
+Тарифы
+</div>
 
 <h2>
 Лучшие варианты для дома
 </h2>
 
-<p class="section-intro">
+<p class="section-intro centered">
 Доступные скорости и условия зависят от конкретного адреса.
 После проверки предложим подходящие варианты.
 </p>
+
+</div>
 
 <div class="tariff-grid">
 
@@ -954,13 +1094,8 @@ h2{
 Базовый
 </div>
 
-<h3>
-Для одного человека
-</h3>
-
 <div class="speed">
-100
-<small>Мбит/с*</small>
+100 <small>Мбит/с*</small>
 </div>
 
 <p>
@@ -985,13 +1120,8 @@ h2{
 Оптимальный
 </div>
 
-<h3>
-Для семьи и работы
-</h3>
-
 <div class="speed">
-300
-<small>Мбит/с*</small>
+300 <small>Мбит/с*</small>
 </div>
 
 <p>
@@ -1016,13 +1146,8 @@ h2{
 Максимум
 </div>
 
-<h3>
-Для большого дома
-</h3>
-
 <div class="speed">
-600
-<small>Мбит/с*</small>
+600 <small>Мбит/с*</small>
 </div>
 
 <p>
@@ -1044,6 +1169,7 @@ h2{
 </div>
 
 </div>
+
 </section>
 
 <section class="section light" id="steps">
@@ -1061,32 +1187,57 @@ h2{
 <div class="steps">
 
 <div class="step">
-<div class="step-num">01</div>
-<h3>Оставляете заявку</h3>
+
+<div class="step-num">
+01
+</div>
+
+<h3>
+Оставляете заявку
+</h3>
+
 <p>
 Выбираете населённый пункт и указываете адрес.
 </p>
+
 </div>
 
 <div class="step">
-<div class="step-num">02</div>
-<h3>Проверяем адрес</h3>
+
+<div class="step-num">
+02
+</div>
+
+<h3>
+Проверяем адрес и выбираем тариф
+</h3>
+
 <p>
-Уточняем техническую возможность подключения.
+Уточняем техническую возможность подключения и подбираем подходящий вариант.
 </p>
+
 </div>
 
 <div class="step">
-<div class="step-num">03</div>
-<h3>Подключаем интернет</h3>
+
+<div class="step-num">
+03
+</div>
+
+<h3>
+Подключаем интернет
+</h3>
+
 <p>
 Согласовываем удобное время и выполняем подключение.
 </p>
-</div>
 
 </div>
 
 </div>
+
+</div>
+
 </section>
 
 <section class="section light" id="check" style="padding-top:0">
@@ -1109,32 +1260,145 @@ h2{
 
 </div>
 
-<form class="form">
+<form class="form" onsubmit="return false;">
 
-<select required>
-<option value="">Населённый пункт</option>
-<option>Београд</option>
-<option>Нови-Сад</option>
-<option>Ниш</option>
-<option>Крагуевац</option>
-<option>Суботица</option>
+<div class="field">
+<label for="firstName">Имя латиницей</label>
+<input id="firstName" type="text" placeholder="Ivan" required>
+</div>
+
+<div class="field">
+<label for="lastName">Фамилия латиницей</label>
+<input id="lastName" type="text" placeholder="Petrov" required>
+</div>
+
+<div class="field">
+
+<label for="city">
+Населённый пункт
+</label>
+
+<select id="city" required>
+
+<option value="">
+Выберите населённый пункт
+</option>
+
+<option>Beograd</option>
+<option>Novi Sad</option>
+<option>Niš</option>
+<option>Kragujevac</option>
+<option>Subotica</option>
+
 </select>
 
-<input type="text" placeholder="Улица">
+</div>
 
-<input type="text" placeholder="Дом">
+<div class="field">
 
-<input type="text" placeholder="Квартира">
+<label for="street">
+Улица
+</label>
 
-<input class="full" type="tel" placeholder="Телефон / WhatsApp / Telegram">
+<input
+id="street"
+type="text"
+placeholder="Bulevar oslobođenja"
+required>
 
-<button class="btn btn-blue full" type="button">
+</div>
+
+<div class="field">
+
+<label for="house">
+Номер дома
+</label>
+
+<input
+id="house"
+type="text"
+placeholder="25"
+required>
+
+</div>
+
+<div class="field">
+
+<label for="apartment">
+Номер квартиры
+</label>
+
+<input
+id="apartment"
+type="text"
+placeholder="12"
+required>
+
+</div>
+
+<div class="field">
+
+<label for="contactType">
+Как с вами связаться
+</label>
+
+<select id="contactType" required>
+
+<option value="">
+Выберите способ связи
+</option>
+
+<option>
+Телефон
+</option>
+
+<option>
+WhatsApp
+</option>
+
+<option>
+Telegram
+</option>
+
+<option>
+Email
+</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label for="contact">
+Контакт
+</label>
+
+<input
+id="contact"
+type="text"
+placeholder="+381... или email@example.com"
+required>
+
+</div>
+
+<button
+class="btn btn-blue full"
+type="submit">
+
 Проверить возможность подключения
+
 </button>
+
+<p class="form-note">
+Имя и фамилию указывайте латинскими буквами.
+Мы используем данные только для проверки возможности подключения и связи с вами.
+</p>
 
 </form>
 
 </div>
+
 </section>
 
 <footer>
@@ -1142,8 +1406,15 @@ h2{
 <div class="container">
 
 <div class="footer-logo">
-<img src="logo.png" alt="InternetSerbia">
-<strong>Internet<span>Serbia</span></strong>
+
+<img
+src="logo.png"
+alt="InternetSerbia">
+
+<strong>
+Internet<span>Serbia</span>
+</strong>
+
 </div>
 
 <p>
