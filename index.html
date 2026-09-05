@@ -29,6 +29,7 @@ InternetSerbia — домашний интернет в Сербии
   --blue-bright:#63aeff;
   --blue-soft:#9fc8ff;
   --blue-border:#a8ceff;
+  --telegram:#229ED9;
 
   --red:#ef3340;
 
@@ -372,6 +373,8 @@ h1 strong{
 
   justify-content:center;
 
+  gap:9px;
+
   border:none;
 
   border-radius:15px;
@@ -429,6 +432,28 @@ h1 strong{
 .btn-dark:hover{
   background:
     rgba(255,255,255,.09);
+}
+
+.btn-telegram{
+  color:#fff;
+
+  background:
+    rgba(34,158,217,.14);
+
+  border:
+    1px solid
+    rgba(87,188,238,.42);
+}
+
+.btn-telegram:hover{
+  background:
+    rgba(34,158,217,.22);
+}
+
+.telegram-icon{
+  width:18px;
+  height:18px;
+  flex:0 0 18px;
 }
 
 
@@ -830,7 +855,7 @@ h2{
 }
 
 .tariff{
-  min-height:340px;
+  min-height:350px;
 
   padding:30px;
 
@@ -902,7 +927,7 @@ h2{
 
 .price{
   margin:
-    26px 0 14px;
+    24px 0 10px;
 
   color:#fff;
 
@@ -925,15 +950,19 @@ h2{
   letter-spacing:0;
 }
 
-.tariff p{
+.speed{
   margin:
-    0 0 12px;
+    2px 0 18px;
 
-  color:#91a4b9;
+  color:#6eb0ff;
 
-  font-size:14px;
+  font-size:19px;
 
-  line-height:1.6;
+  line-height:1.2;
+
+  font-weight:900;
+
+  letter-spacing:.2px;
 }
 
 .tariff ul{
@@ -1190,7 +1219,7 @@ h2{
   line-height:1.5;
 }
 
-.phone-note{
+.info-note{
   grid-column:
     1 / -1;
 
@@ -1216,6 +1245,76 @@ h2{
   line-height:1.5;
 
   font-weight:700;
+}
+
+
+/* =====================================================
+   TELEGRAM SUPPORT FLOATING BUTTON
+===================================================== */
+
+.support-float{
+  position:fixed;
+
+  right:22px;
+
+  bottom:22px;
+
+  z-index:150;
+
+  display:inline-flex;
+
+  align-items:center;
+
+  gap:10px;
+
+  min-height:54px;
+
+  padding:
+    0 18px;
+
+  border-radius:999px;
+
+  color:#fff;
+
+  background:
+
+    linear-gradient(
+      135deg,
+      #27a9e8,
+      #168ac5
+    );
+
+  box-shadow:
+
+    0 16px 42px
+    rgba(34,158,217,.38);
+
+  font-size:14px;
+
+  font-weight:800;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.support-float:hover{
+  transform:
+    translateY(-2px);
+
+  box-shadow:
+
+    0 20px 48px
+    rgba(34,158,217,.48);
+}
+
+.support-float svg{
+  width:21px;
+
+  height:21px;
+
+  flex:
+    0 0 21px;
 }
 
 
@@ -1603,12 +1702,6 @@ footer p{
     font-size:19px;
   }
 
-  .benefit p{
-    font-size:14px;
-
-    line-height:1.55;
-  }
-
 
   /* TARIFFS MOBILE */
 
@@ -1626,6 +1719,10 @@ footer p{
 
   .price{
     font-size:40px;
+  }
+
+  .speed{
+    font-size:18px;
   }
 
 
@@ -1696,8 +1793,24 @@ footer p{
   }
 
   .form-note,
-  .phone-note{
+  .info-note{
     grid-column:auto;
+  }
+
+
+  /* TELEGRAM FLOAT MOBILE */
+
+  .support-float{
+    right:12px;
+
+    bottom:12px;
+
+    min-height:48px;
+
+    padding:
+      0 15px;
+
+    font-size:13px;
   }
 
 
@@ -1843,6 +1956,27 @@ Internet<span>Serbia</span>
 >
 
 Посмотреть тарифы
+
+</a>
+
+
+<a
+  class="btn btn-telegram"
+  href="https://t.me/internetserbia"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+
+<svg
+  class="telegram-icon"
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  aria-hidden="true"
+>
+<path d="M21.6 3.1 2.9 10.3c-1.3.5-1.3 1.3-.2 1.7l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .8-.2 1-.4l2.4-2.3 5 3.7c.9.5 1.6.2 1.8-.8L23.5 4.6c.3-1.2-.5-1.9-1.9-1.5Zm-2.4 3.5-8.7 7.9-.3 3.5-1.2-3.8 10.2-6.4c.5-.3.9-1.4 0-1.2Z"/>
+</svg>
+
+Мы в Telegram
 
 </a>
 
@@ -2156,7 +2290,6 @@ RU
 
 <div class="tariffs-head">
 
-
 <div class="kicker">
 
 Тарифы
@@ -2173,8 +2306,8 @@ RU
 
 <p class="section-intro centered">
 
-Доступные скорости и условия зависят от конкретного адреса.
-После проверки предложим подходящие варианты.
+Доступные тарифы и возможность подключения
+зависят от конкретного адреса.
 
 </p>
 
@@ -2188,7 +2321,6 @@ RU
 <!-- BASIC -->
 
 <div class="tariff">
-
 
 <div class="tariff-label">
 
@@ -2208,11 +2340,11 @@ RU
 </div>
 
 
-<p>
+<div class="speed">
 
-Доступность и параметры подключения зависят от конкретного адреса.
+200/100 Mbps
 
-</p>
+</div>
 
 
 <ul>
@@ -2249,7 +2381,6 @@ Wi-Fi роутер
 
 <div class="tariff featured">
 
-
 <div class="tariff-label">
 
 Оптима
@@ -2268,11 +2399,11 @@ Wi-Fi роутер
 </div>
 
 
-<p>
+<div class="speed">
 
-Доступность и параметры подключения зависят от конкретного адреса.
+450/225 Mbps
 
-</p>
+</div>
 
 
 <ul>
@@ -2309,7 +2440,6 @@ Wi-Fi роутер
 
 <div class="tariff">
 
-
 <div class="tariff-label">
 
 Премиум
@@ -2328,11 +2458,11 @@ Wi-Fi роутер
 </div>
 
 
-<p>
+<div class="speed">
 
-Доступность и параметры подключения зависят от конкретного адреса.
+1000/500 Mbps
 
-</p>
+</div>
 
 
 <ul>
@@ -2419,7 +2549,8 @@ Wi-Fi роутер
 
 <p>
 
-Выбираете населённый пункт и указываете адрес.
+Выбираете населённый пункт
+и указываете адрес.
 
 </p>
 
@@ -2446,7 +2577,8 @@ Wi-Fi роутер
 <p>
 
 Уточняем техническую возможность подключения
-и подбираем подходящий вариант.
+и подбираем индивидуальный тариф.
+Возможно подключение кабельного ТВ.
 
 </p>
 
@@ -2512,7 +2644,8 @@ Wi-Fi роутер
 
 <h3>
 
-Узнайте, можно ли подключить интернет в вашем доме
+Узнайте, можно ли подключить интернет
+в вашем доме
 
 </h3>
 
@@ -2606,79 +2739,42 @@ Wi-Fi роутер
 
 
 <option>Beograd</option>
-
 <option>Bor</option>
-
 <option>Cacak</option>
-
 <option>Jagodina</option>
-
 <option>Kikinda</option>
-
 <option>Kopaonik</option>
-
 <option>Kragujevac</option>
-
 <option>Kraljevo</option>
-
 <option>Krusevac</option>
-
 <option>Lazarevac</option>
-
 <option>Leskovac</option>
-
 <option>Loznica</option>
-
 <option>Mladenovac</option>
-
 <option>Nis</option>
-
 <option>Novi Beograd</option>
-
 <option>Novi Pazar</option>
-
 <option>Novi Sad</option>
-
 <option>Obrenovac</option>
-
 <option>Pancevo</option>
-
 <option>Paracin</option>
-
 <option>Pirot</option>
-
 <option>Pozarevac</option>
-
 <option>Pozega</option>
-
 <option>Ruma</option>
-
 <option>Sabac</option>
-
 <option>Smederevo</option>
-
 <option>Sombor</option>
-
 <option>Sremska Mitrovica</option>
-
 <option>Subotica</option>
-
 <option>Uzice</option>
-
 <option>Valjevo</option>
-
 <option>Vranje</option>
-
 <option>Vrbas</option>
-
 <option>Vrnjacka Banja</option>
-
 <option>Vrsac</option>
-
 <option>Zemun</option>
-
 <option>Zlatibor</option>
-
 <option>Zrenjanin</option>
 
 
@@ -2822,7 +2918,7 @@ Email
 
 
 
-<!-- BUTTON -->
+<!-- SUBMIT -->
 
 <button
   class="btn btn-blue full"
@@ -2835,24 +2931,21 @@ Email
 
 
 
-<!-- PRIVACY -->
-
 <p class="form-note">
 
 Имя и фамилию указывайте латинскими буквами.
-Мы используем предоставленные данные только для проверки
-возможности подключения и связи с вами.
+Мы используем предоставленные данные только
+для проверки возможности подключения
+и связи с вами.
 
 </p>
 
 
 
-<!-- PHONE LATER -->
-
-<p class="phone-note">
+<p class="info-note">
 
 После подтверждения возможности подключения
-для составления договора потребуется ваш номер телефона.
+для составления договора потребуется дополнительная информация.
 
 </p>
 
@@ -2911,6 +3004,34 @@ Internet<span>Serbia</span>
 </div>
 
 </footer>
+
+
+
+<!-- =====================================================
+     FLOATING TELEGRAM SUPPORT
+===================================================== -->
+
+<a
+  class="support-float"
+  href="https://t.me/internet_serbia"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Чат с поддержкой в Telegram"
+>
+
+<svg
+  viewBox="0 0 24 24"
+  fill="currentColor"
+  aria-hidden="true"
+>
+
+<path d="M21.6 3.1 2.9 10.3c-1.3.5-1.3 1.3-.2 1.7l4.8 1.5 1.8 5.6c.2.6.1.9.8.9.5 0 .8-.2 1-.4l2.4-2.3 5 3.7c.9.5 1.6.2 1.8-.8L23.5 4.6c.3-1.2-.5-1.9-1.9-1.5Zm-2.4 3.5-8.7 7.9-.3 3.5-1.2-3.8 10.2-6.4c.5-.3.9-1.4 0-1.2Z"/>
+
+</svg>
+
+Чат с поддержкой
+
+</a>
 
 
 
