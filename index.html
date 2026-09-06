@@ -217,9 +217,9 @@
       overflow: hidden;
       box-shadow: 0 30px 70px rgba(0, 0, 0, 0.38);
       display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 12px;
+      align-items: stretch;
+      justify-content: stretch;
+      padding: 0;
     }
 
     .hero-card::before {
@@ -238,8 +238,9 @@
       width: 100%;
       height: 100%;
       max-width: none;
-      max-height: 446px;
-      object-fit: contain;
+      max-height: none;
+      object-fit: cover;
+      border-radius: 28px;
       filter: drop-shadow(0 25px 30px rgba(0, 0, 0, 0.5));
     }
 
@@ -690,14 +691,7 @@
 
       .hero-card {
         min-height: 300px;
-        padding: 12px;
-      }
-
-      .hero-card img {
-        width: 100%;
-        height: 100%;
-        max-height: 276px;
-        object-fit: contain;
+        padding: 0;
       }
 
       section {
