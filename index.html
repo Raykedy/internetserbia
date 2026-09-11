@@ -118,7 +118,6 @@ content="Проверьте возможность подключения дом
 </script>
 
 <style>
-
 * {
 box-sizing: border-box;
 margin: 0;
@@ -1328,6 +1327,22 @@ required
 
 <div class="field full-width">
 
+<label for="telegram">
+Telegram
+</label>
+
+<input
+id="telegram"
+name="telegram"
+type="text"
+placeholder="@username"
+autocomplete="off"
+>
+
+</div>
+
+<div class="field full-width">
+
 <label for="city">
 Населённый пункт
 </label>
@@ -1552,6 +1567,8 @@ const payload = {
 name: String(formData.get("name") || "").trim(),
 
 email: String(formData.get("email") || "").trim(),
+
+telegram: String(formData.get("telegram") || "").trim(),
 
 city: String(formData.get("city") || "").trim(),
 
