@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Тарифы InternetSerbia — интернет и TV + Интернет в Сербии.">
+  <title>Тарифы — InternetSerbia</title>
+
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Arial,Helvetica,sans-serif;
+      color:#fff;
+      background:
+        radial-gradient(circle at 82% 8%,rgba(0,126,255,.24),transparent 24%),
+        radial-gradient(circle at 18% 28%,rgba(219,35,64,.12),transparent 18%),
+        radial-gradient(circle at 75% 78%,rgba(0,161,255,.11),transparent 20%),
+        linear-gradient(180deg,#020b18 0%,#061326 42%,#031020 100%);
+      min-height:100vh;
+      overflow-x:hidden
+    }
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+    .page{position:relative;z-index:1}
+    .container{width:min(1180px,calc(100% - 36px));margin:0 auto}
+
+    header{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(16px);
+      background:rgba(2,10,23,.88);
+      border-bottom:1px solid rgba(74,162,255,.18)
+    }
+    .header-inner{
+      min-height:82px;display:flex;align-items:center;
+      justify-content:space-between;gap:20px
+    }
+    .brand{display:flex;align-items:center;gap:13px;min-width:0}
+    .brand img{width:58px;height:58px;object-fit:contain;flex:0 0 auto}
+    .brand-text strong{
+      display:block;font-size:23px;line-height:1;
+      letter-spacing:-.7px;white-space:nowrap
+    }
+    .brand-text strong span{color:#ef2b3f}
+    .brand-text small{
+      display:block;margin-top:7px;color:#c7d8ee;
+      letter-spacing:5px;text-transform:uppercase;font-size:9px;white-space:nowrap
+    }
+    .back-btn{
+      min-height:44px;padding:0 18px;display:inline-flex;align-items:center;
+      justify-content:center;border:1px solid rgba(79,178,255,.7);
+      border-radius:999px;color:#fff;font-size:14px;font-weight:800;
+      background:linear-gradient(180deg,rgba(20,91,191,.42),rgba(4,35,84,.6));
+      box-shadow:0 0 0 1px rgba(0,106,255,.12) inset,0 0 22px rgba(0,139,255,.34);
+      transition:.2s ease
+    }
+    .back-btn:hover{transform:translateY(-2px)}
+
+    .hero{
+      padding:72px 0 38px;position:relative;overflow:hidden
+    }
+    .hero:after{
+      content:"";position:absolute;width:540px;height:540px;border-radius:50%;
+      right:-110px;top:-110px;border:1px solid rgba(57,162,255,.4);
+      box-shadow:0 0 60px rgba(0,128,255,.22),inset 0 0 80px rgba(0,123,255,.18);
+      background:
+        radial-gradient(circle at 35% 32%,rgba(73,182,255,.35),transparent 22%),
+        radial-gradient(circle at 54% 58%,rgba(0,90,205,.24),transparent 55%),
+        rgba(0,52,119,.08);
+      opacity:.72;z-index:-1
+    }
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;padding:8px 13px;
+      border-radius:999px;border:1px solid rgba(45,151,255,.35);
+      background:rgba(11,83,165,.14);color:#9fd4ff;font-size:12px;
+      font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-bottom:18px
+    }
+    h1{
+      font-size:clamp(56px,8vw,106px);line-height:.92;letter-spacing:-5px;
+      margin-bottom:14px;text-shadow:0 0 24px rgba(55,175,255,.28);
+      background:linear-gradient(180deg,#fff 5%,#eaf7ff 52%,#8bd5ff 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .hero p{color:#c6d7e9;font-size:clamp(18px,2.2vw,26px);max-width:720px}
+    .hero-badges{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px}
+    .hero-badge{
+      display:inline-flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;
+      background:rgba(7,29,62,.58);border:1px solid rgba(60,154,255,.18);
+      color:#d8ecff;font-size:13px;font-weight:800;letter-spacing:.3px
+    }
+    .hero-badge .icon{color:#60c9ff;font-size:21px;line-height:1}
+
+    .plans{padding:20px 0 72px}
+    .plan-card{
+      position:relative;overflow:hidden;border-radius:28px;margin:0 0 28px;
+      border:1px solid rgba(87,182,255,.72);
+      background:linear-gradient(180deg,rgba(11,58,119,.78),rgba(4,23,53,.92)),rgba(5,28,63,.94);
+      box-shadow:0 0 0 1px rgba(31,141,255,.18) inset,0 0 36px rgba(0,121,255,.24),0 22px 50px rgba(0,0,0,.28)
+    }
+    .plan-card:before{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background:radial-gradient(circle at 7% 8%,rgba(71,190,255,.20),transparent 24%),
+      linear-gradient(120deg,rgba(255,255,255,.025),transparent 38%)
+    }
+    .plan-top{
+      position:relative;padding:28px 30px 22px;border-bottom:1px solid rgba(85,170,255,.22);
+      display:flex;align-items:end;justify-content:space-between;gap:24px
+    }
+    .plan-title h2{
+      font-size:clamp(32px,4vw,50px);line-height:1;letter-spacing:-2px;margin-bottom:7px;
+      background:linear-gradient(180deg,#fff 0%,#dff5ff 60%,#6bc8ff 100%);
+      -webkit-background-clip:text;background-clip:text;color:transparent
+    }
+    .plan-title strong{display:block;font-size:clamp(18px,2.2vw,27px);color:#fff}
+    .plan-title strong span{color:#65d7ff}
+    .plan-tagline{
+      color:#9db6cf;font-size:11px;font-weight:800;letter-spacing:3px;text-transform:uppercase;
+      max-width:390px;text-align:right;line-height:1.7
+    }
+    .plan-body{
+      position:relative;display:grid;grid-template-columns:1fr 315px;gap:20px;padding:24px 28px 28px
+    }
+    .table-wrap{
+      overflow-x:auto;border-radius:18px;border:1px solid rgba(74,157,255,.28);
+      background:rgba(2,19,46,.72)
+    }
+    table{width:100%;border-collapse:collapse;min-width:640px}
+    th{
+      text-align:left;padding:14px 18px;color:#aecdf0;font-size:13px;letter-spacing:.7px;
+      text-transform:uppercase;background:rgba(18,70,134,.26);
+      border-bottom:1px solid rgba(75,159,255,.25)
+    }
+    td{padding:13px 18px;border-bottom:1px solid rgba(78,150,224,.15);font-size:18px}
+    tr:last-child td{border-bottom:none}
+    tbody tr:nth-child(odd){background:rgba(6,44,96,.19)}
+    .speed{font-weight:900;color:#fff}
+    .speed span{color:#a9c7e8;font-weight:500}
+    .price{font-size:22px;font-weight:900;color:#fff;white-space:nowrap}
+    .price span{font-size:15px;color:#afc9e7;font-weight:500;margin-left:5px}
+
+    .callout{
+      min-height:100%;border-radius:20px;border:1px solid rgba(62,170,255,.5);
+      background:radial-gradient(circle at 50% 15%,rgba(0,166,255,.18),transparent 28%),
+      linear-gradient(180deg,rgba(6,57,120,.64),rgba(5,31,73,.82));
+      padding:24px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
+      box-shadow:0 0 30px rgba(0,128,255,.14) inset
+    }
+    .callout-icon{font-size:48px;line-height:1;margin-bottom:15px;color:#fff;text-shadow:0 0 16px rgba(47,195,255,.65)}
+    .callout h3{font-size:24px;line-height:1.15;margin-bottom:11px}
+    .callout h3 span{color:#59e6ff}
+    .callout p{color:#b9cce1;font-size:13px;line-height:1.55}
+
+    .footer-strip{padding:14px 0 44px}
+    .footer-features{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      border-top:1px solid rgba(75,159,255,.18);
+      border-bottom:1px solid rgba(75,159,255,.18);
+      background:rgba(2,15,34,.42);border-radius:18px;overflow:hidden
+    }
+    .footer-feature{
+      min-height:90px;display:flex;align-items:center;justify-content:center;gap:13px;
+      padding:16px;border-right:1px solid rgba(75,159,255,.17);
+      color:#d8eaff;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1.6px
+    }
+    .footer-feature:last-child{border-right:none}
+    .footer-feature .icon{color:#56caff;font-size:33px}
+
+    footer{
+      padding:0 0 48px;text-align:center;color:#87a4c0;
+      font-size:12px;letter-spacing:4px;text-transform:uppercase
+    }
+
+    @media (max-width:900px){
+      .plan-top{align-items:flex-start;flex-direction:column}
+      .plan-tagline{text-align:left}
+      .plan-body{grid-template-columns:1fr}
+      .callout{min-height:180px}
+    }
+
+    @media (max-width:650px){
+      .container{width:min(100% - 20px,1180px)}
+      .header-inner{min-height:68px}
+      .brand img{width:44px;height:44px}
+      .brand-text strong{font-size:18px}
+      .brand-text small{display:none}
+      .back-btn{min-height:40px;padding:0 13px;font-size:12px}
+      .hero{padding:52px 0 28px}
+      h1{font-size:58px;letter-spacing:-3px}
+      .hero p{font-size:17px}
+      .hero-badges{display:grid;grid-template-columns:1fr}
+      .plan-card{border-radius:20px}
+      .plan-top{padding:22px 18px 18px}
+      .plan-title h2{font-size:36px}
+      .plan-title strong{font-size:18px}
+      .plan-tagline{font-size:9px;letter-spacing:2px}
+      .plan-body{padding:15px}
+      table{min-width:560px}
+      th{padding:12px 13px;font-size:11px}
+      td{padding:11px 13px;font-size:16px}
+      .price{font-size:19px}
+      .callout{padding:20px}
+      .callout h3{font-size:22px}
+      .footer-features{grid-template-columns:1fr}
+      .footer-feature{
+        border-right:none;border-bottom:1px solid rgba(75,159,255,.17);
+        justify-content:flex-start
+      }
+      .footer-feature:last-child{border-bottom:none}
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+<header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="InternetSerbia">
+      <div class="brand-text">
+        <strong>Internet<span>Serbia</span></strong>
+        <small>быстро и просто</small>
+      </div>
+    </a>
+    <a class="back-btn" href="index.html">← Вернуться на главную</a>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">InternetSerbia • тарифы</div>
+    <h1>Тарифы</h1>
+    <p>Выберите подходящий вариант подключения.</p>
+
+    <div class="hero-badges">
+      <div class="hero-badge"><span class="icon">↯</span><span>Быстрый интернет</span></div>
+      <div class="hero-badge"><span class="icon">◈</span><span>Надёжная связь</span></div>
+      <div class="hero-badge"><span class="icon">∞</span><span>Больше возможностей</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="plans">
+<div class="container">
+
+<article class="plan-card">
+  <div class="plan-top">
+    <div class="plan-title">
+      <h2>Интернет</h2>
+      <strong>Тарифы на <span>24 месяца</span></strong>
+    </div>
+    <div class="plan-tagline">Стабильность сегодня.<br>Больше возможностей завтра.</div>
+  </div>
+  <div class="plan-body">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Скорость</th>
+            <th>Абонентская плата</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="speed">200/100 <span>Mbps</span></td><td class="price">1 990 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">250/125 <span>Mbps</span></td><td class="price">2 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">300/150 <span>Mbps</span></td><td class="price">2 490 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">350/175 <span>Mbps</span></td><td class="price">2 690 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">400/200 <span>Mbps</span></td><td class="price">2 790 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">450/225 <span>Mbps</span></td><td class="price">2 890 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">500/250 <span>Mbps</span></td><td class="price">2 990 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">600/300 <span>Mbps</span></td><td class="price">3 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">700/350 <span>Mbps</span></td><td class="price">3 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">800/400 <span>Mbps</span></td><td class="price">4 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">900/450 <span>Mbps</span></td><td class="price">4 490 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">1000/500 <span>Mbps</span></td><td class="price">4 990 <span>дин/мес</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="callout">
+      <div class="callout-icon">⌁</div>
+      <h3>Стандартное подключение — <span>бесплатно</span></h3>
+      <p>При договоре на 6, 12 или 24 месяца. Цены в таблице — для 24 месяцев.</p>
+    </aside>
+  </div>
+</article>
+
+<article class="plan-card">
+  <div class="plan-top">
+    <div class="plan-title">
+      <h2>Интернет</h2>
+      <strong>Тарифы на <span>12 месяцев</span></strong>
+    </div>
+    <div class="plan-tagline">Стабильность сегодня.<br>Больше возможностей завтра.</div>
+  </div>
+  <div class="plan-body">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Скорость</th>
+            <th>Абонентская плата</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="speed">200/100 <span>Mbps</span></td><td class="price">2 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">250/125 <span>Mbps</span></td><td class="price">2 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">300/150 <span>Mbps</span></td><td class="price">2 790 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">350/175 <span>Mbps</span></td><td class="price">2 990 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">400/200 <span>Mbps</span></td><td class="price">3 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">450/225 <span>Mbps</span></td><td class="price">3 190 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">500/250 <span>Mbps</span></td><td class="price">3 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">600/300 <span>Mbps</span></td><td class="price">4 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">700/350 <span>Mbps</span></td><td class="price">4 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">800/400 <span>Mbps</span></td><td class="price">5 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">900/450 <span>Mbps</span></td><td class="price">5 490 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">1000/500 <span>Mbps</span></td><td class="price">5 990 <span>дин/мес</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="callout">
+      <div class="callout-icon">⌁</div>
+      <h3>Стандартное подключение — <span>бесплатно</span></h3>
+      <p>При договоре на 6, 12 или 24 месяца. Цены в таблице — для 12 месяцев.</p>
+    </aside>
+  </div>
+</article>
+
+<article class="plan-card">
+  <div class="plan-top">
+    <div class="plan-title">
+      <h2>Интернет</h2>
+      <strong>Тарифы на <span>6 месяцев</span></strong>
+    </div>
+    <div class="plan-tagline">Стабильность сегодня.<br>Больше возможностей завтра.</div>
+  </div>
+  <div class="plan-body">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Скорость</th>
+            <th>Абонентская плата</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="speed">200/100 <span>Mbps</span></td><td class="price">2 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">250/125 <span>Mbps</span></td><td class="price">2 890 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">300/150 <span>Mbps</span></td><td class="price">3 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">350/175 <span>Mbps</span></td><td class="price">3 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">400/200 <span>Mbps</span></td><td class="price">3 390 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">450/225 <span>Mbps</span></td><td class="price">3 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">500/250 <span>Mbps</span></td><td class="price">3 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">600/300 <span>Mbps</span></td><td class="price">5 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">700/350 <span>Mbps</span></td><td class="price">5 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">800/400 <span>Mbps</span></td><td class="price">6 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">900/450 <span>Mbps</span></td><td class="price">6 490 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">1000/500 <span>Mbps</span></td><td class="price">6 990 <span>дин/мес</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="callout">
+      <div class="callout-icon">⌁</div>
+      <h3>Стандартное подключение — <span>бесплатно</span></h3>
+      <p>При договоре на 6, 12 или 24 месяца. Цены в таблице — для 6 месяцев.</p>
+    </aside>
+  </div>
+</article>
+
+<article class="plan-card">
+  <div class="plan-top">
+    <div class="plan-title">
+      <h2>TV + Интернет</h2>
+      <strong>Тарифы на <span>12 месяцев</span></strong>
+    </div>
+    <div class="plan-tagline">Пакеты для дома.<br>Связь и развлечения вместе.</div>
+  </div>
+  <div class="plan-body">
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Пакет</th>
+            <th>Абонентская плата</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="speed">TV + 200 <span>Mbps</span></td><td class="price">3 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 250 <span>Mbps</span></td><td class="price">3 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 300 <span>Mbps</span></td><td class="price">3 790 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 350 <span>Mbps</span></td><td class="price">3 990 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 400 <span>Mbps</span></td><td class="price">4 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 450 <span>Mbps</span></td><td class="price">4 190 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 500 <span>Mbps</span></td><td class="price">4 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 600 <span>Mbps</span></td><td class="price">5 290 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 700 <span>Mbps</span></td><td class="price">5 590 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 800 <span>Mbps</span></td><td class="price">6 090 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 900 <span>Mbps</span></td><td class="price">6 490 <span>дин/мес</span></td></tr>
+          <tr><td class="speed">TV + 1000 <span>Mbps</span></td><td class="price">6 990 <span>дин/мес</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <aside class="callout">
+      <div class="callout-icon">▣ + ⌁</div>
+      <h3>ТВ и интернет — <span>в одном пакете</span></h3>
+      <p>Цены в таблице — для 12 месяцев. Подбор пакета — после проверки адреса.</p>
+    </aside>
+  </div>
+</article>
+
+</div>
+</section>
+
+<section class="footer-strip">
+  <div class="container">
+    <div class="footer-features">
+      <div class="footer-feature">
+        <span class="icon">↯</span>
+        <span>Быстрый<br>интернет</span>
+      </div>
+
+      <div class="footer-feature">
+        <span class="icon">◈</span>
+        <span>Надёжная<br>связь</span>
+      </div>
+
+      <div class="footer-feature">
+        <span class="icon">∞</span>
+        <span>Больше<br>возможностей</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  INTERNETSERBIA.COM
+</footer>
+
+</div>
+</body>
+</html>
