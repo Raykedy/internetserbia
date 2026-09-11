@@ -1310,33 +1310,37 @@ required
 
 <div class="field full-width">
 
-<label for="email">
-E-mail
+<label for="contactType">
+Способ связи
 </label>
 
-<input
-id="email"
-name="email"
-type="email"
-placeholder="name@example.com"
-autocomplete="email"
+<select
+id="contactType"
+name="contact_type"
 required
 >
+<option value="">
+Выберите способ связи
+</option>
+<option value="telegram">Telegram</option>
+<option value="email">E-mail</option>
+</select>
 
 </div>
 
 <div class="field full-width">
 
-<label for="telegram">
-Telegram
+<label for="contact">
+Контакт
 </label>
 
 <input
-id="telegram"
-name="telegram"
+id="contact"
+name="contact"
 type="text"
-placeholder="@username"
+placeholder="Сначала выберите способ связи"
 autocomplete="off"
+required
 >
 
 </div>
@@ -1551,6 +1555,30 @@ document.getElementById("successMessage");
 const workerUrl =
 "https://internetserbia-api.kedikun.workers.dev/";
 
+const contactType =
+document.getElementById("contactType");
+
+const contactInput =
+document.getElementById("contact");
+
+contactType.addEventListener("change", function () {
+
+if (contactType.value === "email") {
+contactInput.type = "email";
+contactInput.placeholder = "name@example.com";
+contactInput.autocomplete = "email";
+} else if (contactType.value === "telegram") {
+contactInput.type = "text";
+contactInput.placeholder = "@username";
+contactInput.autocomplete = "off";
+} else {
+contactInput.type = "text";
+contactInput.placeholder = "Сначала выберите способ связи";
+contactInput.autocomplete = "off";
+}
+
+});
+
 applicationForm.addEventListener("submit", async function (event) {
 
 event.preventDefault();
@@ -1566,9 +1594,13 @@ const payload = {
 
 name: String(formData.get("name") || "").trim(),
 
-email: String(formData.get("email") || "").trim(),
+email: String(formData.get("contact_type") || "") === "email"
+? String(formData.get("contact") || "").trim()
+: "",
 
-telegram: String(formData.get("telegram") || "").trim(),
+telegram: String(formData.get("contact_type") || "") === "telegram"
+? String(formData.get("contact") || "").trim()
+: "",
 
 city: String(formData.get("city") || "").trim(),
 
