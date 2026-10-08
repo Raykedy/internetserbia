@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
@@ -20,4 +21,13 @@
     <loc>https://internetserbia.com/oplata-interneta-v-serbii.html</loc>
   </url>
 
+  <url>
+    <loc>https://internetserbia.com/articles.html</loc>
+  </url>
+
+  <url>
+    <loc>https://internetserbia.com/pochemu-internet-v-serbii-bez-vnzh.html</loc>
+  </url>
+
 </urlset>
+
