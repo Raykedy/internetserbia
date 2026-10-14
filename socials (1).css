@@ -1,0 +1,19 @@
+/* Internet Serbia: кнопки соцсетей, не изменяют стили остальных страниц */
+/* Internet Serbia — единый блок социальных сетей */
+    .is-social-section { width:min(1180px,calc(100% - 40px)); box-sizing:border-box; margin:8px auto 54px; padding:31px 30px 34px; border:1px solid rgba(110,175,245,.18); border-radius:22px; background:linear-gradient(120deg,rgba(18,45,73,.75),rgba(9,23,39,.9)); }
+    .is-social-heading { margin:0 0 7px; font-size:clamp(23px,2.8vw,30px); line-height:1.3; letter-spacing:-.5px; text-align:center; }
+    .is-social-caption { margin:0 0 24px; color:#a9b8c8; text-align:center; font-size:14px; }
+    .is-social-grid { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:11px; }
+    .is-social-link { min-width:0; min-height:77px; display:flex; align-items:center; justify-content:center; gap:10px; padding:12px 9px; border:1px solid rgba(130,180,235,.2); border-radius:14px; background:rgba(255,255,255,.045); color:#e9f5ff; font-size:13px; font-weight:700; transition:background .2s,border-color .2s,transform .2s; }
+    .is-social-link:hover { background:rgba(66,140,219,.15); border-color:rgba(137,201,255,.55); color:white; transform:translateY(-3px); }
+    .is-social-icon { display:grid; place-items:center; flex:0 0 38px; width:38px; height:38px; border-radius:11px; color:#fff; }
+    .is-social-icon svg { display:block; width:23px; height:23px; }
+    .is-social-instagram { background:linear-gradient(135deg,#7a38d8,#cf327c 55%,#f49b34); }
+    .is-social-facebook { background:#1877f2; }
+    .is-social-threads { background:#0b0c0f; border:1px solid #495465; font:bold 30px/1 Arial,Helvetica,sans-serif; }
+    .is-social-youtube { background:#f01b23; }
+    .is-social-tiktok { background:#0a0c15; box-shadow:inset 3px 0 #25f4ee,inset -3px 0 #fe2c55; }
+    .is-social-telegram { background:#269bd8; }
+    @media(max-width:980px) { .is-social-grid { grid-template-columns:repeat(3,minmax(0,1fr)); } }
+    @media(max-width:530px) { .is-social-section { width:calc(100% - 24px); padding:25px 15px 26px; } .is-social-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; } .is-social-link { min-height:70px; padding:10px 8px; font-size:13px; } .is-social-icon { flex-basis:35px; width:35px; height:35px; } }
+    @media(prefers-reduced-motion:reduce) { .is-social-link,.is-social-link:hover { transition:none; transform:none; } }
