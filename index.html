@@ -2477,5 +2477,155 @@ shareStatus.textContent =
 
 </script>
 
+<!-- Мобильное меню Internet Serbia: начало -->
+<style>
+  .mobile-wordmark, .mobile-menu-button, .mobile-menu {
+    display: none;
+  }
+
+  @media (max-width: 950px) {
+    .header-inner .logo > .desktop-wordmark {
+      display: none;
+    }
+
+    .header-inner .logo > .mobile-wordmark {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.06;
+      white-space: nowrap;
+    }
+
+    .mobile-menu-button {
+      display: flex;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(135, 190, 255, .3);
+      border-radius: 12px;
+      background: rgba(40, 100, 175, .15);
+      color: #fff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    header .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      z-index: 101;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      padding: 10px 14px 16px;
+      background: #091728;
+      border-bottom: 1px solid rgba(135, 190, 255, .25);
+      box-shadow: 0 18px 32px rgba(0, 0, 0, .4);
+    }
+
+    header .mobile-menu.is-open {
+      display: flex;
+    }
+
+    header .mobile-menu a {
+      display: block;
+      padding: 13px 15px;
+      color: #e5f2ff;
+      font-size: 15px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(135, 190, 255, .10);
+    }
+
+    header .mobile-menu a:last-child {
+      margin-top: 7px;
+      border: 1px solid rgba(135, 190, 255, .30);
+      border-radius: 10px;
+      background: rgba(20, 120, 255, .15);
+    }
+  }
+</style>
+
+<script>
+(() => {
+  const header = document.querySelector('body > header');
+  const inner = header?.querySelector('.header-inner');
+  const logo = inner?.querySelector('.logo');
+  const nav = inner?.querySelector('nav');
+  const oldName = logo?.querySelector(':scope > span');
+
+  if (!header || !inner || !logo || !nav || !oldName) return;
+
+  oldName.classList.add('desktop-wordmark');
+
+  const newName = document.createElement('span');
+  newName.className = 'mobile-wordmark';
+
+  for (const word of ['Internet', 'Serbia']) {
+    const line = document.createElement('span');
+    line.textContent = word;
+    newName.appendChild(line);
+  }
+
+  logo.appendChild(newName);
+
+  const menu = document.createElement('nav');
+  menu.id = 'mobile-nav';
+  menu.className = 'mobile-menu';
+  menu.setAttribute('aria-label', 'Мобильное меню');
+
+  nav.querySelectorAll('a').forEach(link => {
+    menu.appendChild(link.cloneNode(true));
+  });
+
+  header.appendChild(menu);
+
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.className = 'mobile-menu-button';
+  button.setAttribute('aria-controls', 'mobile-nav');
+  inner.appendChild(button);
+
+  function setOpen(open) {
+    menu.classList.toggle('is-open', open);
+    button.textContent = open ? '✕' : '☰';
+    button.setAttribute('aria-expanded', String(open));
+    button.setAttribute(
+      'aria-label',
+      open ? 'Закрыть меню' : 'Открыть меню'
+    );
+  }
+
+  setOpen(false);
+
+  button.addEventListener('click', () => {
+    setOpen(!menu.classList.contains('is-open'));
+  });
+
+  menu.addEventListener('click', e => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+
+  document.addEventListener('click', e => {
+    if (!header.contains(e.target)) setOpen(false);
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 950) setOpen(false);
+  });
+})();
+</script>
+<!-- Мобильное меню Internet Serbia: конец -->
+
 </body>
 </html>
